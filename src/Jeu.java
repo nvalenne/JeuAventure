@@ -2,6 +2,10 @@ import Game.Enchantment.Enchantment;
 import Game.Item.Weapon;
 import Game.Personnage.Player.Classe.ClasseJoueur;
 import Game.Personnage.Player.Joueur;
+import Game.Stage.Stage1;
+
+import java.sql.*;
+import javafx.*;
 
 public class Jeu {
     public static void main(String[] args) {
@@ -12,18 +16,9 @@ public class Jeu {
 
         Weapon baton = new Weapon("baton de bois", null, "corps à corps", 1, 1, 1, false);
 
-        Joueur j1 = new Joueur();
+        Joueur j1 = new Joueur(); // affiche classe larbin et des poings en tant qu'arme par défaut
         Joueur j2 = new Joueur("Chloe", "feminin", 1, baton, guerrier, 150, 200);
         Joueur j3 = new Joueur("Balkany", "masculin", 1, baton, assassin, 150, 200);
-
-        j1.attaquer(j2);
-        /*
-            System.out.println(j1); // affiche classe larbin et des poings en tant qu'arme par défaut
-            System.out.println(j2);
-            System.out.println(j3);
-        */
-        System.out.println(j1);
-
-
+        Stage1.lancer();
     }
 }
