@@ -25,7 +25,7 @@ public class Joueur {
         this.Explevel = 1;
         this.pv = 100;
         this.endurance = 100;
-        weapon = new Weapon("poing", "mains", 5, 0, 1, false, null);
+        weapon = new Weapon("poing", null, "mains", 5, 0, 1, false);
         classePerso = new ClasseJoueur("larbin", 0, 0, 0 ,0, 0);
         this.init();
     }
@@ -54,7 +54,7 @@ public class Joueur {
     public String toString() {
         return "Joueur " + nomJoueur + " de sexe " + sexe + "\n"
                 + ", de classe " + classePerso.getNameClasse() + " de niveau " + Explevel + " d'expérience \n"
-                + ", possède une arme : " + weapon.getNameWeapon() + "\n"
+                + ", possède une arme : " + weapon.getNameItem() + "\n"
                 + "a une endurance de " + endurance + " et une vitalité de " + pv + " PVs";
     }
 

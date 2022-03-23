@@ -1,4 +1,4 @@
-import Game.Effect.Effect;
+import Game.Enchantment.Enchantment;
 import Game.Item.Weapon;
 import Game.Personnage.Classe.ClasseJoueur;
 import Game.Personnage.Joueur;
@@ -8,9 +8,9 @@ public class Jeu {
         ClasseJoueur assassin = new ClasseJoueur("assassin", 2, 7, 2, 7, 6);
         ClasseJoueur guerrier = new ClasseJoueur("guerrier", 6, 3, 7, 2, 5);
 
-        Effect poison = new Effect(10, "perte de PV", 0);
+        Enchantment poison = new Enchantment(10, "perte de PV", 0);
 
-        Weapon baton = new Weapon("baton de bois", "arme à une main", 1, 1, 1, false, null);
+        Weapon baton = new Weapon("baton de bois", null, "arme à une main", 1, 1, 1, false);
 
         Joueur j1 = new Joueur();
         Joueur j2 = new Joueur("chloe", "feminin", 1, baton, guerrier, 150, 200);

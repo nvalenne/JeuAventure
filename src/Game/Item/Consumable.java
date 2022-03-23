@@ -1,24 +1,21 @@
 package Game.Item;
 
-import Game.Effect.Effect;
+import Game.Enchantment.Enchantment;
 
-import java.util.List;
-
-public class Consumable {
-    protected Effect effects;
+public class Consumable extends Item {
     protected boolean isThrowable;
-    public Consumable(Effect effects, boolean isThrowable){
-        this.effects = effects;
+    public Consumable(String name, Enchantment enchantment, boolean isThrowable){
+        super(name, enchantment);
         this.isThrowable = isThrowable;
     }
-    public Consumable(){
-        this.effects = null;
+    public Consumable(String name){
+        super(name, null);
         this.isThrowable = false;
     }
 
-    public Effect getEffects() {return effects;}
+    public Enchantment getEnchantment() {return enchantment;}
     public boolean getIsThrowable() {return isThrowable;}
 
-    public void setEffects(Effect effects) {this.effects = effects;}
+    public void setEnchantment(Enchantment enchantment) {this.enchantment = enchantment;}
     public void setThrowable(boolean throwable) {isThrowable = throwable;}
 }
