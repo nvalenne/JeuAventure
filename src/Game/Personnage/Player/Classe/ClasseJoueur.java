@@ -1,4 +1,4 @@
-package Game.Personnage.Classe;
+package Game.Personnage.Player.Classe;
 
 public class ClasseJoueur extends Competences{
     protected String nameClasse;
