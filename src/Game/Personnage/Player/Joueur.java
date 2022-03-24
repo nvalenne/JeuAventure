@@ -9,10 +9,10 @@ public class Joueur {
     Scanner scan = new Scanner(System.in);
 
     protected String sexe, nomJoueur;
-    protected int Explevel, pv, endurance;
+    protected int Explevel, pv, endurance, portefeuille;
     protected ClasseJoueur classePerso;
     protected Weapon weapon;
-    public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int endurance, int pv){
+    public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int endurance, int pv, int portefeuille){
         this.nomJoueur = nomJoueur;
         this.sexe = sexe;
         this.Explevel = level;
@@ -20,6 +20,7 @@ public class Joueur {
         this.classePerso = classe;
         this.endurance = endurance;
         this.pv = pv;
+        this.portefeuille = portefeuille;
     }
     public Joueur(String nomJoueur, String sexe, int level, ClasseJoueur classe, int endurance, int pv){
         this.nomJoueur = nomJoueur;
@@ -36,6 +37,7 @@ public class Joueur {
         this.endurance = 100;
         weapon = new Weapon("poing", null, "corps à corps", 5, 0, 1, false);
         classePerso = new ClasseJoueur("larbin", 0, 0, 0 ,0, 0);
+        this.portefeuille = 0;
         this.init();
     }
     public int getExplevel() {return Explevel;}
@@ -64,7 +66,8 @@ public class Joueur {
         return "Joueur " + nomJoueur + " de sexe " + sexe + "\n"
                 + ", de classe " + classePerso.getNameClasse() + " de niveau " + Explevel + " d'expérience \n"
                 + ", possède une arme : " + weapon.getNameItem() + "\n"
-                + "a une endurance de " + endurance + " et une vitalité de " + pv + " PVs";
+                + "a une endurance de " + endurance + " et une vitalité de " + pv + " PVs\n" +
+                "Il possede " + portefeuille + "pièces d'or";
     }
 
     public void perdsPV(int pv_infliges){this.pv -= pv_infliges;}
