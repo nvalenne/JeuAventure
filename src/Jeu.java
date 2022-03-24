@@ -5,7 +5,7 @@ import Game.Personnage.Player.Joueur;
 import Game.Stage.Stage1;
 
 import java.sql.*;
-import javafx.*;
+// import javafx.*;
 
 public class Jeu {
     public static void main(String[] args) {
@@ -15,10 +15,14 @@ public class Jeu {
         Enchantment poison = new Enchantment(10, "perte de PV", 0);
 
         Weapon baton = new Weapon("baton de bois", null, "corps à corps", 1, 1, 1, false);
+        Weapon anticapitalisme = new Weapon("anticapitalisme", null, "distance", 50, 1,1, false);
 
-        Joueur j1 = new Joueur(); // affiche classe larbin et des poings en tant qu'arme par défaut
+        // Joueur j1 = new Joueur(); // affiche classe larbin et des poings en tant qu'arme par défaut
         Joueur j2 = new Joueur("Chloe", "feminin", 1, baton, guerrier, 150, 200);
         Joueur j3 = new Joueur("Balkany", "masculin", 1, baton, assassin, 150, 200);
+        Joueur j4 = new Joueur("Poutou", "masculin", 3, anticapitalisme, assassin, 300, 400);
+
         Stage1.lancer();
+        j4.attaquer(j3);
     }
 }

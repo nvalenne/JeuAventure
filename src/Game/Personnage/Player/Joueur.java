@@ -21,6 +21,15 @@ public class Joueur {
         this.endurance = endurance;
         this.pv = pv;
     }
+    public Joueur(String nomJoueur, String sexe, int level, ClasseJoueur classe, int endurance, int pv){
+        this.nomJoueur = nomJoueur;
+        this.sexe = sexe;
+        this.Explevel = level;
+        this.weapon = new Weapon("poing", null, "corps à corps", 5, 0, 1, false);
+        this.classePerso = classe;
+        this.endurance = endurance;
+        this.pv = pv;
+    }
     public Joueur(){
         this.Explevel = 1;
         this.pv = 100;
@@ -63,6 +72,9 @@ public class Joueur {
 
     public void attaquer(Joueur j2){
         System.out.println( this.getNomJoueur() + " attaque " + j2.getNomJoueur() );
-        j2.perdsPV(this.getWeapon().getDamage());
+        int degats = this.getWeapon().getDamage();
+        j2.perdsPV(degats);
+        System.out.println("Le joueur " + j2.getNomJoueur() + " a perdu " + degats + " PV !" + "\n" +
+                "PVs du joueur adverse : " + j2.getPv());
     }
 }
