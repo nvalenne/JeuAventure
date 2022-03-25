@@ -67,7 +67,7 @@ public class Joueur {
                 + ", de classe " + classePerso.getNameClasse() + " de niveau " + Explevel + " d'expérience \n"
                 + ", possède une arme : " + weapon.getNameItem() + "\n"
                 + "a une endurance de " + endurance + " et une vitalité de " + pv + " PVs\n" +
-                "Il possede " + portefeuille + "pièces d'or";
+                "Il possede " + portefeuille + " pièces d'or";
     }
 
     public void perdsPV(int pv_infliges){this.pv -= pv_infliges;}
