@@ -1,4 +1,4 @@
-package Game.Personnage.Player.Classe;
+package game.personnage.player.classe;
 
 import java.util.Scanner;
 

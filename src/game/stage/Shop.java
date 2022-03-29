@@ -1,13 +1,13 @@
-package Game.Stage;
+package game.stage;
 
+import game.Jeu;
 import java.util.Scanner;
 
-
-public class Hub {
+public class Shop {
     public final static Scanner scan = new Scanner(System.in);
-    public static void lancer(){
-        System.out.println("==============HUB==============\n" +
-                            "Bienvenue dans le hub !");
+    public static void lancer() throws InterruptedException {
+        System.out.println("==============BOUTIQUE==============\n" +
+                           "Bienvenue à la boutique !");
         System.out.println("(1)   [BUY]\n" +
                            "(2)   [QUIT]");
         if(!scan.hasNextInt()){
@@ -15,8 +15,8 @@ public class Hub {
         }
         int resultInt = scan.nextInt();
         if (resultInt != 1) {
-            Hub.lancer();
-
+            Jeu.main(new String[0]);
         }
+
     }
 }

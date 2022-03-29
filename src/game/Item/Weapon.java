@@ -1,6 +1,6 @@
-package Game.Item;
+package game.Item;
 
-import Game.Enchantment.*;
+import game.enchantment.*;
 
 public class Weapon extends Item{
     protected String typeWeapon;

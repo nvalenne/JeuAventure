@@ -1,29 +1,24 @@
-package Game.Personnage.PNJ;
+package game.personnage.pnj;
 
-import Game.Item.Weapon;
-import Game.Personnage.Player.Joueur;
+import game.Item.Weapon;
+import game.personnage.player.Joueur;
 
 public class Goblin extends PNJ{
-    private int pv;
-    private Weapon weapon;
+    private final Weapon weapon;
     public Goblin(){
-        super("goblin");
-        this.pv = 20;
+        super("goblin", 20);
         this.weapon = new Weapon("baton en bois", null, "corps à corps", 2, 1, 1, false);
     }
     public Goblin(String n){
-        super(n);
-        this.pv = 20;
+        super(n, 20);
         this.weapon = new Weapon("baton en bois", null, "corps à corps", 2, 1, 1, false);
     }
     public Goblin(Weapon weapon){
-        super("Goblin");
-        this.pv = 20;
+        super("Goblin", 20);
         this.weapon = weapon;
     }
     public Goblin(String n, int pv, Weapon weapon){
-        super(n);
-        this.pv = pv;
+        super(n, pv);
         this.weapon = weapon;
     }
 
@@ -32,11 +27,11 @@ public class Goblin extends PNJ{
     public int getPv() {return pv;}
     public Weapon getWeapon() {return weapon;}
 
-    public void attaquer(Joueur j2){
-        System.out.println( this.getNom() + " attaque " + j2.getNomJoueur() );
+    public void attaquer(Joueur j){
+        System.out.println( this.getNom() + " vous attaque !" );
         int degats = this.getWeapon().getDamage();
-        j2.perdsPV(degats);
-        System.out.println("Le joueur " + j2.getNomJoueur() + " a perdu " + degats + " PV !" + "\n" +
-                "PVs du joueur adverse : " + j2.getPv());
+        j.perdsPV(degats);
+        System.out.println("Vous avez perdu " + degats + " PVs ! " +
+                "\nVos PVs : "+ j.getPv());
     }
 }

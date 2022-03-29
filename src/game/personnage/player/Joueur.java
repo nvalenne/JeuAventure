@@ -1,7 +1,8 @@
-package Game.Personnage.Player;
+package game.personnage.player;
 
-import Game.Item.Weapon;
-import Game.Personnage.Player.Classe.ClasseJoueur;
+import game.Item.Weapon;
+import game.personnage.player.classe.ClasseJoueur;
+import game.personnage.pnj.PNJ;
 
 import java.util.Scanner;
 
@@ -30,6 +31,7 @@ public class Joueur {
         this.classePerso = classe;
         this.endurance = endurance;
         this.pv = pv;
+        this.portefeuille = 0;
     }
     public Joueur(){
         this.Explevel = 1;
@@ -47,6 +49,7 @@ public class Joueur {
     public int getPv() {return pv;}
     public String getNomJoueur() {return nomJoueur;}
     public int getEndurance() {return endurance;}
+    public int getPortefeuille() {return portefeuille;}
 
     public void setExplevel(int explevel) {Explevel = explevel;}
     public void setSexe(String sexe) {this.sexe = sexe;}
@@ -55,10 +58,14 @@ public class Joueur {
     public void setNomJoueur(String nomJoueur) {this.nomJoueur = nomJoueur;}
     public void setEndurance(int endurance) {this.endurance = endurance;}
 
+    public void gagneOr(int montant){portefeuille += montant;}
+    public void perdsOr(int montant){portefeuille -= montant;}
+
+
     public void init(){
-        System.out.println("Veuillez chosir le sexe de votre personnage : ");
+        System.out.println("Veuillez choisir le sexe de votre personnage : ");
         sexe = scan.nextLine();
-        System.out.println("Veuillez entrer votre nom : ");
+        System.out.println("Veuillez entrez votre nom : ");
         nomJoueur = scan.nextLine();
     }
 
@@ -72,12 +79,13 @@ public class Joueur {
 
     public void perdsPV(int pv_infliges){this.pv -= pv_infliges;}
     public void gagnePV(int pv_gagnes){this.pv += pv_gagnes;}
+    public boolean estMort(){return this.pv <= 0;}
 
-    public void attaquer(Joueur j2){
-        System.out.println( this.getNomJoueur() + " attaque " + j2.getNomJoueur() );
+    public void attaquer(PNJ pnj){
+        System.out.println( this.getNomJoueur() + " attaque " + pnj.getNom() );
         int degats = this.getWeapon().getDamage();
-        j2.perdsPV(degats);
-        System.out.println("Le joueur " + j2.getNomJoueur() + " a perdu " + degats + " PV !" + "\n" +
-                "PVs du joueur adverse : " + j2.getPv());
+        pnj.perdsPV(degats);
+        System.out.println("Le PNJ " + pnj.getNom() + " a perdu " + degats + " PV !" + "\n" +
+                "PVs du PNJ : " + pnj.getPv());
     }
 }

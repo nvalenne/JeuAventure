@@ -1,6 +1,6 @@
-package Game.Item;
+package game.Item;
 
-import Game.Enchantment.*;
+import game.enchantment.*;
 
 public class Item {
     protected Enchantment enchantment;

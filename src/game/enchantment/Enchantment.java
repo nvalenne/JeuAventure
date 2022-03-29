@@ -1,4 +1,4 @@
-package Game.Enchantment;
+package game.enchantment;
 
 public class Enchantment {
     protected int amount, duration;

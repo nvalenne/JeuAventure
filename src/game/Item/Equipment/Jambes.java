@@ -1,6 +1,6 @@
-package Game.Item.Equipment;
+package game.Item.Equipment;
 
-import Game.Enchantment.Enchantment;
+import game.enchantment.Enchantment;
 
 public class Jambes extends Equipment{
     public Jambes(String name, Enchantment enchant){

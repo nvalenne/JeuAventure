@@ -1,6 +1,6 @@
-package Game.Item;
+package game.Item;
 
-import Game.Enchantment.Enchantment;
+import game.enchantment.Enchantment;
 
 public class Consumable extends Item {
     protected boolean isThrowable;
