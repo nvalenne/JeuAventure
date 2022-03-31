@@ -10,7 +10,8 @@ import java.util.Scanner;
 public class Joueur {
     public static final Scanner scan = new Scanner(System.in);
 
-    private final Inventory inventory = new Inventory();
+    private final static Inventory inventory = new Inventory();
+    public static Joueur joueur;
 
     protected String sexe;
     protected String nomJoueur;
@@ -51,6 +52,7 @@ public class Joueur {
         this.portefeuille = 0;
         this.init();
     }
+
     public int getExplevel() {return Explevel;}
     public String getSexe() {return sexe;}
     public ClasseJoueur getClassePerso() {return classePerso;}
@@ -85,8 +87,15 @@ public class Joueur {
 
 
     public void init(){
-        System.out.println("Veuillez choisir le sexe de votre personnage : ");
-        sexe = scan.nextLine();
+        System.out.println("Veuillez choisir le sexe de votre personnage   (1) [MASCULIN]   (2) [FEMININ]");
+        if (!scan.hasNextInt())
+            System.exit(0);
+        int tempScan = scan.nextInt();
+        if (tempScan == 1)
+            sexe = "masculin";
+        else if (tempScan == 2)
+            sexe = "féminin";
+        scan.nextLine();
         System.out.println("Veuillez entrez votre nom : ");
         nomJoueur = scan.nextLine();
     }
@@ -101,16 +110,18 @@ public class Joueur {
 
     public void perdsPV(int pvLost){this.pv -= pvLost;}
     public void gagnePV(int pvGained){this.pv += pvGained;}
+    public void spendMoney(int amount){this.portefeuille -= amount;}
+    public void gainMoney(int amount){this.portefeuille += amount;}
+
     public boolean estMort(){return this.pv <= 0;}
 
     public void attaquer(PNJ pnj){
         float ccritic = (float) 0.2;
-        double rdm = Math.random();
 
         System.out.println( this.getNomJoueur() + " attaque " + pnj.getNom() );
         int degats = this.getWeapon().getDamage();
 
-        if (rdm <= ccritic){
+        if (Math.random() <= ccritic){
             degats *= 2;
             System.out.println("Coup critique ! ");
         }
@@ -118,4 +129,16 @@ public class Joueur {
         System.out.println("Le PNJ " + pnj.getNom() + " a perdu " + degats + " PV !" + "\n" +
                 "PVs du PNJ : " + pnj.getPv());
     }
+
+    public void acheter(Item item) {
+        if (portefeuille >= item.getPrice()){
+            addItemInInventory(item);
+            portefeuille -= item.getPrice();
+            System.out.println();
+            System.out.println("test");
+        } else {
+            System.out.println("Vous n'avez pas assez de pièces d'or pour vous procurer cet objet !");
+        }
+    }
+
 }

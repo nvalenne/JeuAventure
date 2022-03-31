@@ -18,4 +18,9 @@ public class Consumable extends Item {
 
     public void setEnchantment(Enchantment enchantment) {this.enchantment = enchantment;}
     public void setThrowable(boolean throwable) {isThrowable = throwable;}
+
+    @Override
+    public String toString() {
+        return "Consommable de nom : " + nameItem + " à un prix de " + price + " pièce/s d'or";
+    }
 }

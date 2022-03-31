@@ -7,6 +7,10 @@ public class PNJ {
         this.nom = n;
         this.pv = pv;
     }
+    public PNJ(String n){
+        this.nom = n;
+        this.pv = 100;
+    }
     public String getNom() {return nom;}
     public int getPv() {return pv;}
 
@@ -14,5 +18,9 @@ public class PNJ {
     public void gagnePV(int pv_gagnes){this.pv += pv_gagnes;}
     public boolean estMort(){
         return this.pv <= 0;
+    }
+
+    public void parle(String s){
+        System.out.println(s);
     }
 }

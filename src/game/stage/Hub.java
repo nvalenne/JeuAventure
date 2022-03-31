@@ -1,22 +1,33 @@
 package game.stage;
 
+import game.personnage.player.Inventory;
+import game.personnage.player.Joueur;
+
 import java.util.Scanner;
 
 
 public class Hub {
     private Hub(){}
-    public static final Scanner scan = new Scanner(System.in);
-    public static void lancer() throws InterruptedException {
+    private static final Scanner scan = new Scanner(System.in);
+    public static void lancer(Joueur joueur) throws InterruptedException {
         System.out.println("==============HUB==============\n" +
                             "Bienvenue dans le hub !");
-        System.out.println("(1)   [BUY]\n" +
-                           "(2)   [QUIT]");
-        if(!scan.hasNextInt() || (scan.nextInt() != 1)){
+        System.out.println(" (1)   [PLAY]\n (2)   [SHOP]\n (3)   [INVENTORY]\n (4)   [QUIT]");
+        if(!scan.hasNextInt()){
             System.exit(0);
         }
         int resultInt = scan.nextInt();
-        if (resultInt == 1) {
-            Shop.lancer();
+        switch (resultInt){
+            case 1:
+                Stage1.lancer(joueur);
+                break;
+            case 2:
+                Shop.lancer(joueur);
+                break;
+            case 3:
+                joueur.getInventory().displayInventory();
+            default:
+                System.exit(0);
         }
     }
 }

@@ -13,7 +13,7 @@ public class Stage1 {
     public static void lancer(Joueur j) throws InterruptedException {
         int montant = 0;
 
-        System.out.println("Une horde de gobelins ");
+        System.out.println("Une horde de gobelins arrive !");
         for(int monstres = 1; monstres <= 1; monstres++){
             if(j.estMort()){
                 Jeu.jeuPerdant();
@@ -39,6 +39,8 @@ public class Stage1 {
                         goblin.attaquer(j);
                         TimeUnit.SECONDS.sleep(1);
                 }
+                if (j.estMort())
+                    Jeu.jeuPerdant();
             }
             System.out.println("Le gobelin "+ goblin.getNom() +" est mort !");
             j.gagneOr(5);
@@ -48,6 +50,6 @@ public class Stage1 {
         System.out.println(" Vous avez tué la horde de gobelins !");
         System.out.println(" Vous avez récolté : " + montant + " pièces d'or");
         TimeUnit.SECONDS.sleep(3);
-        Hub.lancer();
+        Hub.lancer(j);
     }
 }

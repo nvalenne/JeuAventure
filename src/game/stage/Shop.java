@@ -5,33 +5,47 @@ import game.item.Item;
 import game.Jeu;
 import game.item.Weapon;
 import game.item.equipment.*;
+import game.personnage.player.Joueur;
+import game.personnage.pnj.PNJ;
 
 import java.util.Scanner;
 
 public class Shop {
-    public static Item[] articlesVente = new Item[]{
-            new Consumable("pomme", 2),
-            new Weapon("Epée en bois", 10, "arme blanche", 10, 3, 1, false)
+    public static Item[] articlesVente;
 
-    };
-    public final static Scanner scan = new Scanner(System.in);
-    public static void lancer() throws InterruptedException {
-        System.out.println("==============BOUTIQUE==============\n" +
-                           "Bienvenue à la boutique !");
-        System.out.println("(1)   [BUY]\n" +
-                           "(2)   [QUIT]");
+    private final static Scanner scan = new Scanner(System.in);
+    public static void lancer(Joueur j) throws InterruptedException {
+        PNJ marchand = new PNJ("Marchand Pierre");
+        articlesVente = new Item[]{
+                new Consumable("Pomme", 2),
+                new Weapon("Epée en bois", 10, "arme blanche", 10, 3, 1, false)
+
+        };
+
+        marchand.parle(marchand.getNom() + ": Bienvenue guerrier/ère ! N'hésites pas à regarder notre collection !" );
+        System.out.println("(0)   [QUIT]");
+        for (int i = 0; i < articlesVente.length ; i++){
+            System.out.println("(" + (i+1) + ") " + articlesVente[i].getNameItem() + " : " + articlesVente[i].getPrice() + " pièces d'or");
+        }
+        System.out.println("Or : " + j.getPortefeuille());
         if(!scan.hasNextInt()){
             System.exit(0);
         }
         int resultInt = scan.nextInt();
-        if (resultInt != 1) {
-            Jeu.main(new String[0]);
-        } else {
+        if (resultInt == 0)
+            Hub.lancer(Jeu.joueur);
+        else {
             for (int i = 0; i < articlesVente.length ; i++){
-                System.out.println("(" + (i+1) + ") " + articlesVente[i].getNameItem() + " : " + articlesVente[i].getPrice() + " pièce d'or");
+                if ((resultInt-1) == i){
+                    if (j.getPortefeuille() >= articlesVente[i].getPrice()){
+                        j.addItemInInventory(articlesVente[i]);
+                        j.spendMoney(articlesVente[i].getPrice());
+                    } else {
+                        System.out.println(" /!\\ Vous n'avez pas assez de pièces d'or pour vous procurer cet objet ! /!\\");
+                    }
+                }
             }
-            System.out.println("(0)   [QUIT]");
+            Shop.lancer(j);
         }
-
     }
 }
