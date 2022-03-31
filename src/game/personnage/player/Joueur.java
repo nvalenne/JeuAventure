@@ -1,18 +1,27 @@
 package game.personnage.player;
 
-import game.Item.Weapon;
+import game.item.Item;
+import game.item.Weapon;
 import game.personnage.player.classe.ClasseJoueur;
 import game.personnage.pnj.PNJ;
 
 import java.util.Scanner;
 
 public class Joueur {
-    Scanner scan = new Scanner(System.in);
+    public static final Scanner scan = new Scanner(System.in);
 
-    protected String sexe, nomJoueur;
-    protected int Explevel, pv, endurance, portefeuille;
+    private final Inventory inventory = new Inventory();
+
+    protected String sexe;
+    protected String nomJoueur;
+    protected int Explevel;
+    protected int pv;
+    protected int endurance;
+    protected int portefeuille;
     protected ClasseJoueur classePerso;
     protected Weapon weapon;
+    protected Weapon poings = new Weapon("poing", 0, "corps à corps", 5, 0, 1, false);
+
     public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int endurance, int pv, int portefeuille){
         this.nomJoueur = nomJoueur;
         this.sexe = sexe;
@@ -27,7 +36,7 @@ public class Joueur {
         this.nomJoueur = nomJoueur;
         this.sexe = sexe;
         this.Explevel = level;
-        this.weapon = new Weapon("poing", null, "corps à corps", 5, 0, 1, false);
+        this.weapon = poings;
         this.classePerso = classe;
         this.endurance = endurance;
         this.pv = pv;
@@ -37,7 +46,7 @@ public class Joueur {
         this.Explevel = 1;
         this.pv = 100;
         this.endurance = 100;
-        weapon = new Weapon("poing", null, "corps à corps", 5, 0, 1, false);
+        weapon = poings;
         classePerso = new ClasseJoueur("larbin", 0, 0, 0 ,0, 0);
         this.portefeuille = 0;
         this.init();
@@ -50,8 +59,9 @@ public class Joueur {
     public String getNomJoueur() {return nomJoueur;}
     public int getEndurance() {return endurance;}
     public int getPortefeuille() {return portefeuille;}
+    public Inventory getInventory() {return inventory;}
 
-    public void setExplevel(int explevel) {Explevel = explevel;}
+    public void setExplevel(int explevel) {this.Explevel = explevel;}
     public void setSexe(String sexe) {this.sexe = sexe;}
     public void setPv(int pv) {this.pv = pv;}
     public void setWeapon(Weapon weapon) {this.weapon = weapon;}
@@ -60,6 +70,18 @@ public class Joueur {
 
     public void gagneOr(int montant){portefeuille += montant;}
     public void perdsOr(int montant){portefeuille -= montant;}
+
+    public void addItemInInventory(Item item){
+        inventory.getInventory().add(item);
+    }
+    public void removeItemFromInventory(Item item){
+        if (inventory.getInventory().contains(item)){
+            inventory.getInventory().remove(item);
+        }
+    }
+    public boolean InventoryisEmpty(){
+        return inventory.getInventory().isEmpty();
+    }
 
 
     public void init(){
@@ -77,13 +99,21 @@ public class Joueur {
                 "Il possede " + portefeuille + " pièces d'or";
     }
 
-    public void perdsPV(int pv_infliges){this.pv -= pv_infliges;}
-    public void gagnePV(int pv_gagnes){this.pv += pv_gagnes;}
+    public void perdsPV(int pvLost){this.pv -= pvLost;}
+    public void gagnePV(int pvGained){this.pv += pvGained;}
     public boolean estMort(){return this.pv <= 0;}
 
     public void attaquer(PNJ pnj){
+        float ccritic = (float) 0.2;
+        double rdm = Math.random();
+
         System.out.println( this.getNomJoueur() + " attaque " + pnj.getNom() );
         int degats = this.getWeapon().getDamage();
+
+        if (rdm <= ccritic){
+            degats *= 2;
+            System.out.println("Coup critique ! ");
+        }
         pnj.perdsPV(degats);
         System.out.println("Le PNJ " + pnj.getNom() + " a perdu " + degats + " PV !" + "\n" +
                 "PVs du PNJ : " + pnj.getPv());

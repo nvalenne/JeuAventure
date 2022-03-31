@@ -1,15 +1,15 @@
-package game.Item;
+package game.item;
 
 import game.enchantment.Enchantment;
 
 public class Consumable extends Item {
     protected boolean isThrowable;
-    public Consumable(String name, Enchantment enchantment, boolean isThrowable){
-        super(name, enchantment);
+    public Consumable(String name, Enchantment enchantment, int price, boolean isThrowable){
+        super(name, enchantment, price);
         this.isThrowable = isThrowable;
     }
-    public Consumable(String name){
-        super(name, null);
+    public Consumable(String name, int price){
+        super(name, null, price);
         this.isThrowable = false;
     }
 

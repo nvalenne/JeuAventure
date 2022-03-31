@@ -6,6 +6,7 @@ import game.stage.*;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import java.sql.*;
 
 public class Jeu {
     public final static Scanner scan = new Scanner(System.in);
@@ -16,7 +17,7 @@ public class Jeu {
         Jeu.main(new String[0]);
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException{
         System.out.println("Bienvenue sur ce jeu !");
         System.out.println(" (1)   [PLAY]\n (2)   [SHOP]\n (3)   [QUIT]");
         if(!scan.hasNextInt()){
