@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static game.Jeu.joueur;
+import static game.Jeu.player;
 
 
 public class Inventory {
@@ -25,9 +25,13 @@ public class Inventory {
         for (Item item : inventory) {
             System.out.println(item.getNameItem() + " - Prix de revente: " + item.getPrice() + " pièces d'or" );
         }
+        if (inventory.isEmpty()){
+            System.out.println(" Aucun item disponible dans votre inventaire...");
+        }
+        System.out.println("\n(E)   [EQUIPMENT] ");
         System.out.println("\n(0)   [QUIT]");
         if(!scan.hasNextInt() || scan.nextInt() == 0){
-            Hub.lancer(joueur);
+            Hub.lancer(player);
         }
     }
 

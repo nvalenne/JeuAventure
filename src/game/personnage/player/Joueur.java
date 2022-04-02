@@ -2,6 +2,7 @@ package game.personnage.player;
 
 import game.item.Item;
 import game.item.Weapon;
+import game.item.equipment.Equipment;
 import game.personnage.player.classe.ClasseJoueur;
 import game.personnage.pnj.PNJ;
 
@@ -11,17 +12,18 @@ public class Joueur {
     public static final Scanner scan = new Scanner(System.in);
 
     private final static Inventory inventory = new Inventory();
-    public static Joueur joueur;
+    private static Joueur joueur;
 
-    protected String sexe;
-    protected String nomJoueur;
-    protected int Explevel;
-    protected int pv;
-    protected int endurance;
-    protected int portefeuille;
-    protected ClasseJoueur classePerso;
-    protected Weapon weapon;
-    protected Weapon poings = new Weapon("poing", 0, "corps à corps", 5, 0, 1, false);
+    private String sexe;
+    private String nomJoueur;
+    private int Explevel;
+    private int pv;
+    private int endurance;
+    private int portefeuille;
+    private ClasseJoueur classePerso;
+    private Equipment[] equipment;
+    private Weapon weapon;
+    private Weapon poings = new Weapon("poing", 0, "corps à corps", 5, 0, 1, false);
 
     public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int endurance, int pv, int portefeuille){
         this.nomJoueur = nomJoueur;
@@ -33,12 +35,13 @@ public class Joueur {
         this.pv = pv;
         this.portefeuille = portefeuille;
     }
-    public Joueur(String nomJoueur, String sexe, int level, ClasseJoueur classe, int endurance, int pv){
+    public Joueur(String nomJoueur, String sexe, int level, ClasseJoueur classe, int endurance, int pv, Equipment[] equipment){
         this.nomJoueur = nomJoueur;
         this.sexe = sexe;
         this.Explevel = level;
         this.weapon = poings;
         this.classePerso = classe;
+        this.equipment = equipment;
         this.endurance = endurance;
         this.pv = pv;
         this.portefeuille = 0;

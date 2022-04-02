@@ -4,7 +4,6 @@ import game.item.Consumable;
 import game.item.Item;
 import game.Jeu;
 import game.item.Weapon;
-import game.item.equipment.*;
 import game.personnage.player.Joueur;
 import game.personnage.pnj.PNJ;
 
@@ -23,7 +22,7 @@ public class Shop {
         };
 
         marchand.parle(marchand.getNom() + ": Bienvenue guerrier/ère ! N'hésites pas à regarder notre collection !" );
-        System.out.println("(0)   [QUIT]");
+        System.out.println("(0)   [BACK]");
         for (int i = 0; i < articlesVente.length ; i++){
             System.out.println("(" + (i+1) + ") " + articlesVente[i].getNameItem() + " : " + articlesVente[i].getPrice() + " pièces d'or");
         }
@@ -33,7 +32,7 @@ public class Shop {
         }
         int resultInt = scan.nextInt();
         if (resultInt == 0)
-            Hub.lancer(Jeu.joueur);
+            Hub.lancer(Jeu.player);
         else {
             for (int i = 0; i < articlesVente.length ; i++){
                 if ((resultInt-1) == i){

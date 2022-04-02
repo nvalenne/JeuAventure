@@ -9,27 +9,23 @@ import java.util.concurrent.TimeUnit;
 
 public class Jeu {
     public final static Scanner scan = new Scanner(System.in);
-    public static Joueur joueur;
+    public static Joueur player;
 
     public static void jeuPerdant() throws InterruptedException {
         System.out.println("\nVous êtes mort !");
         TimeUnit.SECONDS.sleep(3);
-        Hub.lancer(joueur);
-    }
-
-    public boolean CompletedStage(){
-        return true;
+        Hub.lancer(player);
     }
 
     public static void main(String[] args) throws InterruptedException{
-        joueur = new Joueur();
+        player = new Joueur();
         StringBuilder welcomeStr = new StringBuilder("Bienvenue sur ce jeu ");
-        if (joueur.getSexe() == "masculin")
+        if (player.getSexe() == "masculin")
             welcomeStr.append("Guerrier ");
         else
             welcomeStr.append("Guerrière ");
-        System.out.println(welcomeStr + joueur.getNomJoueur() + " !");
-        System.out.println(" (1)   [PLAY]\n (2)   [SHOP]\n (3)   [QUIT]");
+        System.out.println(welcomeStr + player.getNomJoueur() + " !");
+        System.out.println(" (1)   [PLAY]\n (2)   [SHOP]\n (3)   [INVENTORY]\n (4)   [QUIT]");
         if(!scan.hasNextInt()){
             System.exit(0);
         }
@@ -37,11 +33,13 @@ public class Jeu {
 
         switch (resultInt){
             case 1:
-                Stage1.lancer(joueur);
+                Stage1.lancer(player);
                 break;
             case 2:
-                Shop.lancer(joueur);
+                Shop.lancer(player);
                 break;
+            case 3:
+                player.getInventory().displayInventory();
             default:
                 System.exit(0);
         }

@@ -10,7 +10,13 @@ import java.util.concurrent.TimeUnit;
 public class Stage1 {
     private Stage1(){}
     public final static Scanner scan = new Scanner(System.in);
+
+    public static boolean CompletedStage(){
+        return true;
+    }
+
     public static void lancer(Joueur j) throws InterruptedException {
+
         int montant = 0;
 
         System.out.println("Une horde de gobelins arrive !");
@@ -28,16 +34,14 @@ public class Stage1 {
                 }
                 int resultInt = scan.nextInt();
 
-                switch (resultInt){
-                    case 1:
-                        j.attaquer(goblin);
-                        TimeUnit.SECONDS.sleep(1);
-                        goblin.attaquer(j);
-                        TimeUnit.SECONDS.sleep(1);
-                        break;
-                    default:
-                        goblin.attaquer(j);
-                        TimeUnit.SECONDS.sleep(1);
+                if (resultInt == 1) {
+                    j.attaquer(goblin);
+                    TimeUnit.SECONDS.sleep(1);
+                    goblin.attaquer(j);
+                    TimeUnit.SECONDS.sleep(1);
+                } else {
+                    goblin.attaquer(j);
+                    TimeUnit.SECONDS.sleep(1);
                 }
                 if (j.estMort())
                     Jeu.jeuPerdant();

@@ -1,13 +1,34 @@
 package game.item.equipment;
 
-import game.enchantment.Enchantment;
 import game.item.Item;
 
-public class Equipment extends Item {
-    public Equipment(String name, int price){
-        super(name, price);
+public class Equipment {
+    private final Item[] equipmentTab;
+
+    public Equipment() {
+        this.equipmentTab = new Item[]{
+                new Haut(), new Plastron(), new Jambes(), new Pieds()
+        };
     }
-    public Equipment(String name, Enchantment enchantment, int price){
-        super(name, enchantment, price);
+
+    public Equipment(Equipment equip) {
+        this.equipmentTab = new Item[4];
+        for (int i = 0; i < equip.getEquipment().length; i++) {
+            equipmentTab[i] = equip.getEquipment()[i];
+        }
     }
+
+    public Item[] getEquipment() {
+        return equipmentTab;
+    }
+    public Haut getHaut(){return (Haut) equipmentTab[0];}
+    public Plastron getPlastron(){return (Plastron) equipmentTab[1];}
+    public Jambes getJambes(){return (Jambes) equipmentTab[2];}
+    public Pieds getPieds(){return (Pieds) equipmentTab[3];}
+
+    public void setHaut(Haut haut){equipmentTab[0] = haut;}
+    public void setPlastron(Plastron plastron){equipmentTab[1] = plastron;}
+    public void setJambes(Jambes jambes){equipmentTab[2] = jambes;}
+    public void setPieds(Pieds pieds){equipmentTab[3] = pieds;}
+
 }
