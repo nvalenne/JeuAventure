@@ -47,7 +47,7 @@ public class Stage1 {
                     Jeu.jeuPerdant();
             }
             System.out.println("Le gobelin "+ goblin.getNom() +" est mort !");
-            j.gagneOr(5);
+            j.gainMoney(5);
             montant+=5;
 
         }

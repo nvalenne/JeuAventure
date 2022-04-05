@@ -6,12 +6,11 @@ import game.item.equipment.Equipment;
 import game.personnage.player.classe.ClasseJoueur;
 import game.personnage.pnj.PNJ;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Joueur {
     public static final Scanner scan = new Scanner(System.in);
-
-    private final static Inventory inventory = new Inventory();
     private static Joueur joueur;
 
     private String sexe;
@@ -21,38 +20,38 @@ public class Joueur {
     private int endurance;
     private int portefeuille;
     private ClasseJoueur classePerso;
-    private Equipment[] equipment;
+    private Inventory inventory;
+    private Equipment equipment;
     private Weapon weapon;
     private Weapon poings = new Weapon("poing", 0, "corps à corps", 5, 0, 1, false);
 
-    public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int endurance, int pv, int portefeuille){
+    public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int pv, int portefeuille){
         this.nomJoueur = nomJoueur;
         this.sexe = sexe;
         this.Explevel = level;
         this.weapon = weapon;
         this.classePerso = classe;
-        this.endurance = endurance;
         this.pv = pv;
         this.portefeuille = portefeuille;
     }
-    public Joueur(String nomJoueur, String sexe, int level, ClasseJoueur classe, int endurance, int pv, Equipment[] equipment){
+    public Joueur(String nomJoueur, String sexe, int level, ClasseJoueur classe, int pv, Equipment equipment){
         this.nomJoueur = nomJoueur;
         this.sexe = sexe;
         this.Explevel = level;
         this.weapon = poings;
         this.classePerso = classe;
         this.equipment = equipment;
-        this.endurance = endurance;
         this.pv = pv;
         this.portefeuille = 0;
     }
     public Joueur(){
         this.Explevel = 1;
         this.pv = 100;
-        this.endurance = 100;
+        this.inventory = new Inventory();
         weapon = poings;
         classePerso = new ClasseJoueur("larbin", 0, 0, 0 ,0, 0);
         this.portefeuille = 0;
+        this.equipment = new Equipment();
         this.init();
     }
 
@@ -65,24 +64,21 @@ public class Joueur {
     public int getEndurance() {return endurance;}
     public int getPortefeuille() {return portefeuille;}
     public Inventory getInventory() {return inventory;}
+    public List<Item> getInventoryItems(){return inventory.getInventory();}
+    public Equipment getEquipment() {return equipment;}
+    public Item[] getEquipmentItems() {
+        return equipment.getEquipment();
+    }
 
     public void setExplevel(int explevel) {this.Explevel = explevel;}
-    public void setSexe(String sexe) {this.sexe = sexe;}
     public void setPv(int pv) {this.pv = pv;}
     public void setWeapon(Weapon weapon) {this.weapon = weapon;}
-    public void setNomJoueur(String nomJoueur) {this.nomJoueur = nomJoueur;}
-    public void setEndurance(int endurance) {this.endurance = endurance;}
-
-    public void gagneOr(int montant){portefeuille += montant;}
-    public void perdsOr(int montant){portefeuille -= montant;}
 
     public void addItemInInventory(Item item){
         inventory.getInventory().add(item);
     }
     public void removeItemFromInventory(Item item){
-        if (inventory.getInventory().contains(item)){
-            inventory.getInventory().remove(item);
-        }
+        inventory.getInventory().remove(item);
     }
     public boolean InventoryisEmpty(){
         return inventory.getInventory().isEmpty();

@@ -26,6 +26,7 @@ public class Hub {
                 break;
             case 3:
                 joueur.getInventory().displayInventory();
+                break;
             default:
                 System.exit(0);
         }
