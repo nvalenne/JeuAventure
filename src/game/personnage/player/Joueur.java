@@ -8,22 +8,23 @@ import game.personnage.pnj.PNJ;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Joueur {
     public static final Scanner scan = new Scanner(System.in);
     private static Joueur joueur;
+    public static int nbrOfMonstersKilled = 0;
 
     private String sexe;
     private String nomJoueur;
     private int Explevel;
     private int pv;
-    private int endurance;
     private int portefeuille;
     private ClasseJoueur classePerso;
     private Inventory inventory;
     private Equipment equipment;
     private Weapon weapon;
-    private Weapon poings = new Weapon("poing", 0, "corps à corps", 5, 0, 1, false);
+    private Weapon poings = new Weapon("poing", 0, "corps à corps", 20, 0, 1, false);
 
     public Joueur(String nomJoueur, String sexe, int level, Weapon weapon, ClasseJoueur classe, int pv, int portefeuille){
         this.nomJoueur = nomJoueur;
@@ -61,7 +62,6 @@ public class Joueur {
     public Weapon getWeapon() {return weapon;}
     public int getPv() {return pv;}
     public String getNomJoueur() {return nomJoueur;}
-    public int getEndurance() {return endurance;}
     public int getPortefeuille() {return portefeuille;}
     public Inventory getInventory() {return inventory;}
     public List<Item> getInventoryItems(){return inventory.getInventory();}
@@ -99,11 +99,17 @@ public class Joueur {
         nomJoueur = scan.nextLine();
     }
 
+    public void levelUp() throws InterruptedException {
+        System.out.println("\n==========\n Vous avez gagné un niveau ! " + Explevel + " --> " + (Explevel + 1) + "\n==========");
+        setExplevel(Explevel + 1);
+        TimeUnit.SECONDS.sleep(2);
+    }
+
     public String toString() {
         return "Joueur " + nomJoueur + " de sexe " + sexe + "\n"
-                + ", de classe " + classePerso.getNameClasse() + " de niveau " + Explevel + " d'expérience \n"
+                + ", de classe " + classePerso.getNameClasse() + " de niveau " + Explevel + "\n"
                 + ", possède une arme : " + weapon.getNameItem() + "\n"
-                + "a une endurance de " + endurance + " et une vitalité de " + pv + " PVs\n" +
+                + "a une vitalité de " + pv + " PVs\n" +
                 "Il possede " + portefeuille + " pièces d'or";
     }
 

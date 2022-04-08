@@ -33,7 +33,7 @@ public class Jeu {
 
         switch (resultInt){
             case 1:
-                Stage1.lancer(player);
+                StageMenu.lancer(player);
                 break;
             case 2:
                 Shop.lancer(player);

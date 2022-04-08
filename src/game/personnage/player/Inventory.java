@@ -1,7 +1,6 @@
 package game.personnage.player;
 
 import game.item.Item;
-import game.item.equipment.*;
 import game.stage.Hub;
 
 import java.util.ArrayList;
@@ -15,13 +14,17 @@ public class Inventory {
     private static final Scanner scan = new Scanner(System.in);
     private List<Item> inventory;
     public static final int CAPACITY = 30;
+
     public Inventory(){
         this.inventory = new ArrayList<>(CAPACITY);
     }
+
     public Inventory(List<Item> inventory){
         this.inventory = inventory;
     }
+
     public List<Item> getInventory() {return inventory;}
+
     public void displayInventory() throws InterruptedException {
         System.out.println("== INVENTORY ==");
         for (Item item : inventory) {

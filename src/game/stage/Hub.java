@@ -1,6 +1,5 @@
 package game.stage;
 
-import game.personnage.player.Inventory;
 import game.personnage.player.Joueur;
 
 import java.util.Scanner;
@@ -19,7 +18,7 @@ public class Hub {
         int resultInt = scan.nextInt();
         switch (resultInt){
             case 1:
-                Stage1.lancer(joueur);
+                StageMenu.lancer(joueur);
                 break;
             case 2:
                 Shop.lancer(joueur);
