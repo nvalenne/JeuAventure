@@ -16,6 +16,7 @@ public class Item {
         this.enchantment = null;
         this.price = price;
     }
+    public Item(){}
     public Enchantment getEnchantment() {return enchantment;}
     public String getNameItem() {return nameItem;}
     public int getPrice() {return price;}

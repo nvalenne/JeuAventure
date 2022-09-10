@@ -11,7 +11,7 @@ public class Haut extends Item {
 
     }
     public Haut(){
-        super("None", null,0);
+        super(null, null,0);
         this.armure = 0;
     }
     public Haut(String name, Enchantment enchantment, int price, int armure){

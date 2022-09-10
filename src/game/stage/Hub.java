@@ -18,13 +18,14 @@ public class Hub {
         int resultInt = scan.nextInt();
         switch (resultInt){
             case 1:
-                Stage1.lancer(joueur);
+                StageMenu.lancer(joueur);
                 break;
             case 2:
                 Shop.lancer(joueur);
                 break;
             case 3:
                 joueur.getInventory().displayInventory();
+                break;
             default:
                 System.exit(0);
         }

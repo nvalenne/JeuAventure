@@ -1,29 +1,23 @@
-package game.stage;
+package game.stage.levels;
 
 import game.Jeu;
 import game.personnage.player.Joueur;
 import game.personnage.pnj.Goblin;
+import game.stage.Hub;
 
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Stage1 {
-    private Stage1(){}
-    public final static Scanner scan = new Scanner(System.in);
+import static game.Jeu.scan;
+import static game.personnage.player.Joueur.nbrOfMonstersKilled;
 
-    public static boolean CompletedStage(){
-        return true;
-    }
-
+public class Stage2 {
+    private Stage2(){}
     public static void lancer(Joueur j) throws InterruptedException {
 
         int montant = 0;
 
         System.out.println("Une horde de gobelins arrive !");
-        for(int monstres = 1; monstres <= 1; monstres++){
-            if(j.estMort()){
-                Jeu.jeuPerdant();
-            }
+        for(int monstres = 1; monstres <= 10; monstres++){
             String goblinName = "goblin" + monstres;
             Goblin goblin = new Goblin(goblinName);
             System.out.println("Un gobelin vous attaque !");
@@ -35,9 +29,10 @@ public class Stage1 {
                 int resultInt = scan.nextInt();
 
                 if (resultInt == 1) {
-                    j.attaquer(goblin);
-                    TimeUnit.SECONDS.sleep(1);
                     goblin.attaquer(j);
+                    System.out.println("    ====");
+                    TimeUnit.SECONDS.sleep(1);
+                    j.attaquer(goblin);
                     TimeUnit.SECONDS.sleep(1);
                 } else {
                     goblin.attaquer(j);
@@ -46,9 +41,12 @@ public class Stage1 {
                 if (j.estMort())
                     Jeu.jeuPerdant();
             }
+            nbrOfMonstersKilled +=1;
             System.out.println("Le gobelin "+ goblin.getNom() +" est mort !");
-            j.gagneOr(5);
+            j.gainMoney(5);
             montant+=5;
+            if (nbrOfMonstersKilled % (10*j.getExplevel()) == 0)
+                j.levelUp();
 
         }
         System.out.println(" Vous avez tué la horde de gobelins !");
@@ -56,4 +54,5 @@ public class Stage1 {
         TimeUnit.SECONDS.sleep(3);
         Hub.lancer(j);
     }
+
 }
