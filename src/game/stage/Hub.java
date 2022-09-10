@@ -1,6 +1,5 @@
 package game.stage;
 
-import game.personnage.player.Inventory;
 import game.personnage.player.Joueur;
 
 import java.util.Scanner;

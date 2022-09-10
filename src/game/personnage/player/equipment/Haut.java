@@ -1,4 +1,4 @@
-package game.item.equipment;
+package game.personnage.player.equipment;
 
 import game.enchantment.Enchantment;
 import game.item.Item;

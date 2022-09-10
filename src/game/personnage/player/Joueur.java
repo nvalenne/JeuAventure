@@ -2,7 +2,7 @@ package game.personnage.player;
 
 import game.item.Item;
 import game.item.Weapon;
-import game.item.equipment.Equipment;
+import game.personnage.player.equipment.Equipment;
 import game.personnage.player.classe.ClasseJoueur;
 import game.personnage.pnj.PNJ;
 
@@ -80,9 +80,7 @@ public class Joueur {
         inventory.getInventory().add(item);
     }
     public void removeItemFromInventory(Item item){
-        if (inventory.getInventory().contains(item)){
-            inventory.getInventory().remove(item);
-        }
+        inventory.getInventory().remove(item);
     }
     public boolean InventoryisEmpty(){
         return inventory.getInventory().isEmpty();
