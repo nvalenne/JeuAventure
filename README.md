@@ -15,11 +15,11 @@ Then to execute, write this in root path: ```java -cp .:build:**/*.class game.Je
 ## Some screenshots
 
 ### Start game
-![alt text](https://github.com/nvalenne-iut90/JeuAventure/tree/main/screenshots/screenshot_begin.png?raw=true)
+![alt text](https://github.com/nvalenne-iut90/JeuAventure/blob/main/screenshots/screenshot_begin.png?raw=true)
 ### Shop
-![alt text](https://github.com/nvalenne-iut90/JeuAventure/tree/main/screenshots/screenshot_shop.png?raw=true)
+![alt text](https://github.com/nvalenne-iut90/JeuAventure/blob/main/screenshots/screenshot_shop.png?raw=true)
 ### Inventory and equipment
-![alt text](https://github.com/nvalenne-iut90/JeuAventure/tree/main/screenshots/screenshot_inventory.png?raw=true)
-![alt text](https://github.com/nvalenne-iut90/JeuAventure/tree/main/screenshots/screenshot_equipment.png?raw=true)
+![alt text](https://github.com/nvalenne-iut90/JeuAventure/blob/main/screenshots/screenshot_inventory.png?raw=true)
+![alt text](https://github.com/nvalenne-iut90/JeuAventure/blob/main/screenshots/screenshot_equipment.png?raw=true)
 ### Stages and fight
-![alt text](https://github.com/nvalenne-iut90/JeuAventure/tree/main/screenshots/screenshot_stage.png?raw=true)
+![alt text](https://github.com/nvalenne-iut90/JeuAventure/blob/main/screenshots/screenshot_stage.png?raw=true)
